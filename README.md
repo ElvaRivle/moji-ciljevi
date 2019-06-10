@@ -1,7 +1,6 @@
 # zig
-RPG simulator života
+RPG life simulator
 
-Prvi moj projekat. Trudit cu se da ga vremenom usavrsavam. 
+My first project. Hopefully will improve it over time. 
 
-Vise u README u buducnosti
-
+More in READMER in future
