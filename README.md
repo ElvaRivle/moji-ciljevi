@@ -1,0 +1,2 @@
+# zig
+RPG simulator života
