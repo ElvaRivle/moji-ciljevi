@@ -10,14 +10,18 @@ class Router {
 
         $params = $url;
 
-        $dispatch = new $controller();
+        if (class_exists($controller)) $dispatch = new $controller();
+        else {
+            echo "Kontroler {$controller} ne postoji";
+            die();
+        }
 
 
         if (method_exists($dispatch, $action)) {
             call_user_func_array([$dispatch, $action], $params);
         }
         else {
-            echo 'Akcija kontrolera ne postoji<br>';
+            echo "Akcija {$action} kontrolera {$controller} ne postoji";
             die();
         }
 

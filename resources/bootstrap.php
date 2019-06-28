@@ -8,7 +8,6 @@ spl_autoload_register(function($className) {
     elseif (file_exists(DIR.'/resources/app/controllers/'.$className.'.php')) {
         require_once(DIR.'/resources/app/controllers/'.$className.'.php');
     }
-    
 });
 
 
