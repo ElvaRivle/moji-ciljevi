@@ -1,5 +1,4 @@
 function add_goal() {
-
     document.getElementById("goalText").innerHTML = "";
 
     let text = document.getElementById("goalText").value;
@@ -9,6 +8,7 @@ function add_goal() {
     }
 
     let node = document.createElement("div");
+    
     node.className = "dailyGoal";
     node.innerHTML = text;  
 

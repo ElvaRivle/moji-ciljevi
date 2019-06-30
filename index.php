@@ -1,4 +1,5 @@
 <?php
+
 define('DIR', __DIR__);
 
 require_once(DIR."/resources/config.php");
