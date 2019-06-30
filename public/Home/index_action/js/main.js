@@ -1,4 +1,5 @@
 function add_goal() {
+    
     document.getElementById("goalText").innerHTML = "";
 
     let text = document.getElementById("goalText").value;
@@ -13,9 +14,12 @@ function add_goal() {
     node.innerHTML = text;  
 
     node.onclick = function() {
-        alert("blah");
+        //text-decoration: line-through;
+        node.style.textDecoration = "line-through";
+        node.style.color = "olive";
     }
 
     document.getElementById("main").appendChild(node);
+    document.getElementById("goalText").value = "";
     //alert(text);
 }
