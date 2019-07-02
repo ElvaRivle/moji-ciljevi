@@ -1,5 +1,6 @@
 function add_goal() {
     //git checkout -f to drop all LOCAL changes (COMMIT BEFORE)
+    //add it to database via ajax
     
     document.getElementById("goalText").innerHTML = "";
 
@@ -21,7 +22,8 @@ function add_goal() {
 
         setTimeout(function() {
             node.remove();
-        }, 1000);
+            //add deletition from database as well
+        }, 300);
     }
 
     document.getElementById("main").appendChild(node);
