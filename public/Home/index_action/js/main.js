@@ -1,4 +1,5 @@
 function add_goal() {
+    //git checkout -f to drop all LOCAL changes (COMMIT BEFORE)
     
     document.getElementById("goalText").innerHTML = "";
 
