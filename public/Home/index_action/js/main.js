@@ -18,6 +18,10 @@ function add_goal() {
         //text-decoration: line-through;
         node.style.textDecoration = "line-through";
         node.style.color = "olive";
+
+        setTimeout(function() {
+            node.remove();
+        }, 1000);
     }
 
     document.getElementById("main").appendChild(node);
