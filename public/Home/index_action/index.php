@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="css/main.css">
 
-    <title>ZIG</title>
+    <title>Moji Ciljevi</title>
 </head>
 <body>
 
