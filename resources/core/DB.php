@@ -62,16 +62,22 @@ class DB {
         return false;
     }
 
-    public function new_user($table = "users", $uname, $pw) {
-        $sql = "INSERT INTO users (uname, pw) values ('{$uname}', '{$pw}');";
-        if ($this->query($sql) !== false) return true;
-        else return false;
-    }
+    public function insert($table, $params = []) {
+        $sql = "INSERT INTO {$table}";
 
-    public function new_goal($table="goals", $uid, $description, $type) {
-        $sql = "INSERT INTO goals(uid, description, type) values({$uid}, {$description}, {$type});";
-        if ($this->query($sql) !== false) return true;
-        else return false;
+        switch($table) {
+            case 'users':
+                $sql .= "(uname, pw) VALUES (?,?);";
+                if ($this->query($sql, $params) !== false) return true;
+                break;
+
+            case 'goals':
+                $sql .= "(uid, description, type) VALUES (?, ?, ?);";
+                if ($this->query($sql, $params) !== false) return true;
+                break;
+        }
+
+        return false;
     }
 
 }
