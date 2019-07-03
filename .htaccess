@@ -1,5 +1,5 @@
 RewriteEngine On
-
+#Options +FollowSymLinks
 #for development only
 Header set Cache-Control "no-cache, no-store, must-revalidate"
 Header set Pragma "no-cache"
@@ -10,9 +10,9 @@ Header set Expires 0
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $1 !^(public|resources)
-
+RewriteCond $1 !^index\.php$
 RedirectMatch 403 public/?$
 RedirectMatch 403 resources/?$
 
 
-RewriteRule ^(.+)$ index.php/$1 [L,P]
+RewriteRule ^(.+)$ index.php/$1 [L]

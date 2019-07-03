@@ -10,7 +10,7 @@ class Home extends Controller {
     }
 
     public function add_goal_action($uid, $description) {
-        
+        echo 'lola';
     } 
 }
 

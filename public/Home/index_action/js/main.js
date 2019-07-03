@@ -1,20 +1,44 @@
 function add_goal() {
-    //git checkout -f to drop all LOCAL changes (COMMIT BEFORE)
-    //add it to database via ajax
-    //use PUT to update
-    
-    document.getElementById("goalText").innerHTML = "";
 
     let text = document.getElementById("goalText").value;
+    document.getElementById("goalText").innerHTML = "";
     if (text === "") {
         alert("Ne možete unijeti prazan text");
         return;
     }
 
-    let node = document.createElement("div");
+    let ajax = new XMLHttpRequest();
+
+
+    ajax.onreadystatechange = () => {
+        console.log(ajax.readyState);
+
+        if (ajax.readyState == 4) {
+            if (ajax.status === 200) {
+                let node = document.createElement("div");
     
-    node.className = "dailyGoal";
-    node.innerHTML = text;  
+                node.className = "dailyGoal";
+                node.innerHTML = text;  
+
+                document.getElementById("main").appendChild(node);
+                document.getElementById("goalText").value = "";
+            }
+            else {
+                alert("Greška na serveru. Pokušajte kasnije");
+            }
+        }
+    }
+
+    ajax.open("POST", "/moji-ciljevi/Home/add_goal/1/Kupiti!auto/daily");
+    ajax.send();
+
+
+
+
+
+
+/*
+    //ovo ubaci u if gore, ako pritisneš da ajaxom obrišeš iz baze
 
     node.onclick = function() {
         //text-decoration: line-through;
@@ -25,9 +49,8 @@ function add_goal() {
             node.remove();
             //add deletition from database as well
         }, 300);
-    }
+    }*/
 
-    document.getElementById("main").appendChild(node);
-    document.getElementById("goalText").value = "";
+    
     //alert(text);
 }
