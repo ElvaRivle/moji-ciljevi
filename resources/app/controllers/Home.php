@@ -8,6 +8,10 @@ class Home extends Controller {
     public function index_action () {
         $this->_view->render("index_action");   
     }
+
+    public function add_goal_action($uid, $description) {
+        
+    } 
 }
 
 
