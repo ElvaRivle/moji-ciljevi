@@ -6,13 +6,13 @@ Header set Pragma "no-cache"
 Header set Expires 0
 
 
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $1 !^(public|resources)
+
 RedirectMatch 403 public/?$
 RedirectMatch 403 resources/?$
 
 
 RewriteRule ^(.+)$ index.php/$1 [L,P]
-
-
