@@ -1,6 +1,7 @@
 function add_goal() {
     //git checkout -f to drop all LOCAL changes (COMMIT BEFORE)
     //add it to database via ajax
+    //use PUT to update
     
     document.getElementById("goalText").innerHTML = "";
 

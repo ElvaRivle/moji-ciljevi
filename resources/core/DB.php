@@ -46,9 +46,37 @@ class DB {
         }
 
         else return false;
-
-
     }
+
+    //99.9% used for daily goals which are completed every day
+    public function update($table = "goals", $uid, $description) {
+        $sql = "UPDATE {$table} SET completed=1 where uid={$uid} and description={$description} and type='daily'";
+        if (!$this->query($sql)) return false;
+        else return true;
+    }
+
+    //99.9% used for life goals which get completely deleted after done
+    public function delete($table="goals", $uid, $description)  {
+        $sql = "DELETE FROM {$table} WHERE uid={$uid} and description={$description} and type='life'";
+        if (!$this->query($sql)) return false;
+        return true;
+    }
+
+    public function insert($table, $uid, $pw="", $description="", $type="") {
+        switch($table) {
+            case "users":
+                $sql = "INSERT INTO users(uid, pw) values({$uid}, {$pw})";
+                if (!$this->query($sql)) return false;
+            
+            case "goals":
+                $sql = "INSERT INTO goals(uid, description, type) values({$uid}, {$description}, {$type})";
+                if (!$this->query($sql)) return false;
+        }
+
+        return true;
+    }
+
+    
 }
 
 
