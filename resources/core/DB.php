@@ -48,12 +48,27 @@ class DB {
         else return false;
     }
 
-    //99.9% used for daily goals which are completed every day
-    public function update($table = "goals", $uid, $description) {
-        $sql = "UPDATE {$table} SET completed=1 where uid={$uid} and description={$description} and type='daily'";
-        if ($this->query($sql) !== false) return true;
-        else return false;
+    public function update($table, $uname, $fields = []) {
+        $fieldString = '';
+        $values = [];
+
+        foreach($fields as $field => $value) {
+            $fieldString .= ' ' . $field . ' =  ?,';
+            $values[] = $value;
+        }
+
+        $fieldString = trim($fieldString);
+        $fieldString = rtrim($fieldString , ',');
+
+
+
+        $sql = "UPDATE {$table} SET {$fieldString} where uname={$uname}";
+
+        if ($this->query($sql, $values) !== false) return true;
+        return false;
     }
+
+
 
     //99.9% used for life goals which get completely deleted after done
     public function delete($table="goals", $uid, $description)  {
