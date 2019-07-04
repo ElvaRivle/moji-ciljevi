@@ -34,7 +34,9 @@ function add_goal() {
         }
     }
 
-    ajax.open("POST", "/moji-ciljevi/Home/add_goal/1/Kupiti!auto/daily");
+    //SEND USER ENETERED TEXT AND FORMAT SEND/RECIEVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+    //SEND LOGGED IN UNAME (LATER IN PROJECT)
+    ajax.open("POST", "/moji-ciljevi/Home/add_goal/rusko/Kupiti!auto/daily");
     ajax.send();
 
 
