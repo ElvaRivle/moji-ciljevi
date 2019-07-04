@@ -62,7 +62,7 @@ class DB {
 
 
 
-        $sql = "UPDATE {$table} SET {$fieldString} where uname={$uname}";
+        $sql = "UPDATE {$table} SET {$fieldString} where uname={$uname};";
 
         if ($this->query($sql, $values) !== false) return true;
         return false;
@@ -71,8 +71,8 @@ class DB {
 
 
     //99.9% used for life goals which get completely deleted after done
-    public function delete($table="goals", $uid, $description)  {
-        $sql = "DELETE FROM {$table} WHERE uid={$uid} and description={$description} and type='life'";
+    public function delete($table, $uname)  {
+        $sql = "DELETE FROM {$table} WHERE uname={$uname};";
         if ($this->query($sql) !== false) return true;
         return false;
     }
