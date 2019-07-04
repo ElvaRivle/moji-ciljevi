@@ -7,15 +7,15 @@ function add_goal() {
         return;
     }
 
-    let ajax = new XMLHttpRequest();
+    let ajaxAdd = new XMLHttpRequest();
 
 
-    ajax.onreadystatechange = () => {
-        console.log(ajax.readyState);
+    ajaxAdd.onreadystatechange = () => {
+        console.log(ajaxAdd.readyState);
 
-        if (ajax.readyState == 4) {
-            if (ajax.status === 200) {
-                if (ajax.responseText == "NIJE USPJELO"){
+        if (ajaxAdd.readyState == 4) {
+            if (ajaxAdd.status === 200) {
+                if (ajaxAdd.responseText == "NIJE USPJELO"){
                     alert("Greška na serveru. Pokušajte kasnije");
                     return;
                 }
@@ -26,7 +26,8 @@ function add_goal() {
 
                 document.getElementById("main").appendChild(node);
                 document.getElementById("goalText").value = "";
-                
+
+                node.onclick = remove_goal;
             }
             else {
                 alert("Greška na serveru. Pokušajte kasnije");
@@ -36,28 +37,35 @@ function add_goal() {
 
     //SEND USER ENETERED TEXT AND FORMAT SEND/RECIEVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajax.open("POST", "/moji-ciljevi/Home/add_goal/rusko/Kupiti!auto/daily");
-    ajax.send();
+    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/rusko/Kupiti_auto/daily");
+    ajaxAdd.send();
+}
 
+function remove_goal() {
+    let ajaxRemove = new XMLHttpRequest;
 
+    ajaxRemove.onreadystatechange = () => {
+        console.log(ajaxRemove.readyState);
 
+        if (ajaxRemove.readyState == 4) {
+            if (ajaxRemove.status === 200) {
+                if (ajaxRemove.responseText == "NIJE USPJELO"){
+                    alert("Greška na serveru. Pokušajte kasnije");
+                    return;
+                }
 
-
-
-/*
-    //ovo ubaci u if gore, ako pritisneš da ajaxom obrišeš iz baze
-
-    node.onclick = function() {
-        //text-decoration: line-through;
-        node.style.textDecoration = "line-through";
-        node.style.color = "olive";
-
-        setTimeout(function() {
-            node.remove();
-            //add deletition from database as well
-        }, 300);
-    }*/
+                this.style.textDecoration = "line-through";
+                this.style.color = "olive";
+            }
+            else {
+                alert("Greška na serveru. Pokušajte kasnije");
+            }
+        }
+    }
 
     
-    //alert(text);
+
+
+    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_goal/rusko/Kupiti_auto/daily");
+    ajaxRemove.send();
 }

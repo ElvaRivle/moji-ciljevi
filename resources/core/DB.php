@@ -7,9 +7,9 @@ class DB {
     private function __construct() {
         try {
             $this->_pdo = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-            /*$this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->_pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-            */
+            
         }
         catch(PDOException $e) {
             die($e->getMessage());
@@ -35,6 +35,7 @@ class DB {
             $x = 1;
             if (count($params) > 0) {
                 foreach ($params as $param) {
+                    $param = preg_replace('/_/', ' ', $param);
                    $this->_query->bindValue($x, $param);
                    $x++; 
                 }
@@ -48,13 +49,19 @@ class DB {
         else return false;
     }
 
-    public function update($table, $uname, $fields = []) {
-        $fieldString = '';
+    public function update($table, $conditions = [], $columns = []) {
+        //$columnNames = "";
+        $newColumnValues = "";
+        //$conditionsVariables = "";
+        $conditionValues = "";
         $values = [];
 
-        foreach($fields as $field => $value) {
-            $fieldString .= ' ' . $field . ' =  ?,';
-            $values[] = $value;
+        foreach ($columns as $key => $value) {
+            
+        }
+
+        foreach ($conditions as $key => $value) {
+            $conditionValues .= "`{$key}` = ?"
         }
 
         $fieldString = trim($fieldString);
@@ -71,9 +78,35 @@ class DB {
 
 
     //99.9% used for life goals which get completely deleted after done
-    public function delete($table, $uname)  {
-        $sql = "DELETE FROM {$table} WHERE uname={$uname};";
+    public function delete($table, $fields=[])  {
+        
+        /*$sql = "DELETE FROM {$table} WHERE ";
+        foreach ($fields as $field => $value) {
+            $sql .= "`{$field}`='{$value}' AND ";
+        }
+
+        $sql = preg_replace('/ AND $/', '', $sql);
+        $sql = preg_replace('/_/', ' ', $sql);
+        $sql.=';';
+
         if ($this->query($sql) !== false) return true;
+        return false;*/
+
+        $columnValue = '=? AND ';
+        $values = [];
+
+        $sql = "DELETE FROM {$table} WHERE ";
+
+        foreach ($fields as $field => $value) {
+            $field = "`".$field."`";
+            $values[] = $value;
+            $sql .= "{$field}{$columnValue}";
+        }
+
+        $sql = preg_replace('/ AND $/', '', $sql);
+        $sql .= ';';
+
+        if ($this->query($sql, $values) !== false) return true;
         return false;
     }
 
@@ -89,10 +122,13 @@ class DB {
             $values[] = $value;
         }
 
+
+
         $fieldsQuery = rtrim($fieldsQuery, ',');
         $valuesQuery = rtrim($valuesQuery, ',');
 
         $sql = "INSERT INTO {$table} ({$fieldsQuery}) VALUES ({$valuesQuery});";
+        
 
         if ($this->query($sql, $values) !== false) return true;
         else return false;
