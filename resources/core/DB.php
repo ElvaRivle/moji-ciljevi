@@ -63,22 +63,25 @@ class DB {
     }
 
     public function insert($table, $params = []) {
-        $sql = "INSERT INTO {$table}";
+        $fieldsQuery = "";
+        $valuesQuery = "";
+        $values = [];
 
-        switch($table) {
-            case 'users':
-                $sql .= "(uname, pw) VALUES (?,?);";
-                if ($this->query($sql, $params) !== false) return true;
-                break;
 
-            case 'goals':
-                $sql .= "(uid, description, type) VALUES (?, ?, ?);";
-                if ($this->query($sql, $params) !== false) return true;
-                break;
+        foreach ($params as $field => $value) {
+            $fieldsQuery .= '`'. $field .'`';
+            $valuesQuery .= '?,';
+            $values[] = $value;
         }
 
-        return false;
-    }
+        $fieldsQuery = rtrim($fieldsQuery, ',');
+        $valuesQuery = rtrim($valuesQuery, ',');
+
+        $sql = "INSERT INTO {$table} ({$fieldsQuery}) VALUES ({$valuesQuery});";
+
+        if ($this->query($sql, $values) !== false) return true;
+        else return false;
+    } 
 
 }
 
