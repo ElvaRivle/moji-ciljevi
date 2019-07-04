@@ -15,6 +15,10 @@ function add_goal() {
 
         if (ajax.readyState == 4) {
             if (ajax.status === 200) {
+                if (ajax.responseText == "NIJE USPJELO"){
+                    alert("Greška na serveru. Pokušajte kasnije");
+                    return;
+                }
                 let node = document.createElement("div");
     
                 node.className = "dailyGoal";
@@ -22,6 +26,7 @@ function add_goal() {
 
                 document.getElementById("main").appendChild(node);
                 document.getElementById("goalText").value = "";
+                
             }
             else {
                 alert("Greška na serveru. Pokušajte kasnije");

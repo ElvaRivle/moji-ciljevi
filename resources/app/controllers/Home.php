@@ -9,8 +9,11 @@ class Home extends Controller {
         $this->_view->render("index_action");   
     }
 
-    public function add_goal_action($uid, $description) {
-        echo 'lola';
+    public function add_goal_action($uname, $description) {
+        $model = new Goals();
+        if ($model->add_daily_goal($uname, $description)) 
+            echo "USPJELO";
+        else echo "NIJE USPJELO";
     } 
 }
 

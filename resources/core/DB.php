@@ -7,9 +7,9 @@ class DB {
     private function __construct() {
         try {
             $this->_pdo = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-            $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            /*$this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->_pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-            
+            */
         }
         catch(PDOException $e) {
             die($e->getMessage());
@@ -84,7 +84,7 @@ class DB {
 
 
         foreach ($params as $field => $value) {
-            $fieldsQuery .= '`'. $field .'`';
+            $fieldsQuery .= '`'. $field .'`,';
             $valuesQuery .= '?,';
             $values[] = $value;
         }
