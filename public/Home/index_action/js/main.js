@@ -66,6 +66,6 @@ function remove_goal() {
     
 
 
-    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_goal/rusko/Kupiti_auto/daily");
+    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/rusko/Kupiti_auto/daily");
     ajaxRemove.send();
 }

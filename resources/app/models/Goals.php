@@ -22,15 +22,17 @@ class Goals /*extends Model */{
         else return false;
     }
 
-    public function remove_daily_goal($uname, $description, $type) {
+    public function mark_daily_goal_done($uname, $description, $type) {
 
-        $result = $this->_db->delete($this->_tableName, [
-            'description' => $description,
-            'type' => $type
-        ]);
-
-        //REKLI SMO DA CEMO SAMO OZNACITI KAO ZAVRSEN, NE BRISATI GA
-        //DA BI TO URADILI MORAMO PREUREDITI I update DB FUNKCIJU
+        $result = $this->_db->update($this->_tableName, [
+                'uname' => $uname,
+                'description' => $description,
+                'type' => $type
+            ],
+            [
+                'completed' => 1
+            ]
+        );
 
         if ($result) return true;
         else return false;

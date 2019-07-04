@@ -1,8 +1,11 @@
 <?php
 
 class Home extends Controller {
-    public function __construct() {
+    private $_model;
+
+    public function __construct(/* ubuduce moglo bi se ubaciti koji tacno model zelimo za taj request, nece mozda uvijek biti goals */) {
         parent::__construct("Home");
+        $this->_model = new Goals();
     }
 
     public function index_action () {
@@ -10,15 +13,13 @@ class Home extends Controller {
     }
 
     public function add_goal_action($uname, $description, $type) {
-        $model = new Goals();
-        if ($model->add_goal($uname, $description, $type)) 
+        if ($this->_model->add_goal($uname, $description, $type)) 
             echo "USPJELO";
         else echo "NIJE USPJELO";
     } 
 
-    public function remove_goal_action($uname, $description, $type) {
-        $model = new Goals();
-        if ($model->remove_daily_goal($uname, $description, $type)) 
+    public function mark_daily_goal_done_action($uname, $description, $type) {
+        if ($this->_model->mark_daily_goal_done($uname, $description, $type)) 
             echo "USPJELO";
         else echo "NIJE USPJELO";
     }

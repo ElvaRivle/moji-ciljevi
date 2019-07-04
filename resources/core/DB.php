@@ -49,49 +49,36 @@ class DB {
         else return false;
     }
 
-    public function update($table, $conditions = [], $columns = []) {
-        //$columnNames = "";
-        $newColumnValues = "";
-        //$conditionsVariables = "";
-        $conditionValues = "";
-        $values = [];
+    public function update($table, $conditions = [], $values = []) {
+        $valuesQuery = "";
+        $queryValues = [];
 
-        foreach ($columns as $key => $value) {
-            
+        foreach ($values as $key => $value) {
+            $valuesQuery .= "`{$key}`=?,";
+            $queryValues[] = $value;
         }
+
+        $valuesQuery = rtrim($valuesQuery, ',');
+
+        $conditionsQuery = "";
+        $queryConditions = [];
 
         foreach ($conditions as $key => $value) {
-            $conditionValues .= "`{$key}` = ?"
+            $conditionsQuery .= "`{$key}`=? AND ";
+            $queryConditions[] = $value;
         }
 
-        $fieldString = trim($fieldString);
-        $fieldString = rtrim($fieldString , ',');
+        $conditionsQuery = preg_replace('/ AND $/', '', $conditionsQuery);
 
 
+        $sql = "UPDATE {$table} SET {$valuesQuery} where {$conditionsQuery};";
 
-        $sql = "UPDATE {$table} SET {$fieldString} where uname={$uname};";
-
-        if ($this->query($sql, $values) !== false) return true;
+        if ($this->query($sql, array_merge($queryValues, $queryConditions)) !== false) return true;
         return false;
     }
 
 
-
-    //99.9% used for life goals which get completely deleted after done
     public function delete($table, $fields=[])  {
-        
-        /*$sql = "DELETE FROM {$table} WHERE ";
-        foreach ($fields as $field => $value) {
-            $sql .= "`{$field}`='{$value}' AND ";
-        }
-
-        $sql = preg_replace('/ AND $/', '', $sql);
-        $sql = preg_replace('/_/', ' ', $sql);
-        $sql.=';';
-
-        if ($this->query($sql) !== false) return true;
-        return false;*/
-
         $columnValue = '=? AND ';
         $values = [];
 
@@ -114,6 +101,7 @@ class DB {
         $fieldsQuery = "";
         $valuesQuery = "";
         $values = [];
+    
 
 
         foreach ($params as $field => $value) {
