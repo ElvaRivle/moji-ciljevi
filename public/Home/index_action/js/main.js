@@ -1,6 +1,7 @@
 function add_goal() {
 
     let text = document.getElementById("goalText").value;
+    let textToSend = text.replace(/\s/g, '_');
     document.getElementById("goalText").innerHTML = "";
     if (text === "") {
         alert("Ne možete unijeti prazan text");
@@ -35,14 +36,15 @@ function add_goal() {
         }
     }
 
-    //SEND USER ENETERED TEXT AND FORMAT SEND/RECIEVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/rusko/Kupiti_auto/daily");
+    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/rusko/"+textToSend+"/daily");
     ajaxAdd.send();
 }
 
 function remove_goal() {
     let ajaxRemove = new XMLHttpRequest;
+
+    let text = this.innerHTML;
 
     ajaxRemove.onreadystatechange = () => {
         console.log(ajaxRemove.readyState);
@@ -54,6 +56,7 @@ function remove_goal() {
                     return;
                 }
 
+
                 this.style.textDecoration = "line-through";
                 this.style.color = "olive";
             }
@@ -63,9 +66,11 @@ function remove_goal() {
         }
     }
 
+    let textToSend = text.replace(/\s/g, '_');
+
     
 
 
-    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/rusko/Kupiti_auto/daily");
+    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/rusko/"+textToSend+"/daily");
     ajaxRemove.send();
 }
