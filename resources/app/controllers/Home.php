@@ -9,6 +9,7 @@ class Home extends Controller {
     }
 
     public function index_action () {
+        $this->_view->render_goals('daily');
         $this->_view->render("index_action");   
     }
 

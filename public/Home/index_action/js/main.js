@@ -1,5 +1,3 @@
-let clickCnt = 0;
-
 function add_goal() {
 
     let text = document.getElementById("goalText").value;
@@ -23,12 +21,16 @@ function add_goal() {
                 let node = document.createElement("div");
     
                 node.className = "dailyGoal ";
-                node.innerHTML = text;  
+                node.innerHTML = text; 
+                
+                node.dataset.clickCnt = 0;
 
                 document.getElementById("main").appendChild(node);
                 document.getElementById("goalText").value = "";
 
-                node.onclick = remove_goal;
+                node.onclick = function() {
+                    remove_goal(node);
+                }
             }
             else {
                 alert("Greška na serveru. Pokušajte kasnije");
@@ -41,11 +43,16 @@ function add_goal() {
     ajaxAdd.send();
 }
 
-function remove_goal() {
-    clickCnt++;
+function remove_goal(item) {
     let ajaxRemove = new XMLHttpRequest;
+    
+    
+    
+    item.dataset.clickCnt++;
 
-    let text = this.innerHTML;
+    if(isNaN(item.dataset.clickCnt)) item.dataset.clickCnt = 1;
+
+    let text = item.innerHTML;
     let textToSend = text.replace(/\s/g, '_');
 
     ajaxRemove.onreadystatechange = () => {
@@ -56,9 +63,9 @@ function remove_goal() {
                     return;
                 }
 
-                this.className += "dailyGoalDone ";
+                item.className += "dailyGoalDone ";
                 
-                if (clickCnt === 3) this.remove();
+                if (item.dataset.clickCnt == 3) item.remove();
             }
             else {
                 alert("Greška na serveru. Pokušajte kasnije");
@@ -68,11 +75,11 @@ function remove_goal() {
 
 
 
-    if (clickCnt === 1) {
+    if (item.dataset.clickCnt == 1) {
         ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/rusko/"+textToSend+"/daily");
         ajaxRemove.send();
     }
-    else if (clickCnt === 3) {
+    else if (item.dataset.clickCnt == 3) {
         ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_daily_goal/rusko/"+textToSend+"/daily");
         ajaxRemove.send();
     }
