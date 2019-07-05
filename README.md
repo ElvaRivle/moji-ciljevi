@@ -5,7 +5,7 @@ My first project. Hopefully will improve it over time.
 
 More in README in future
 
-[WARNING: README USES mm/dd/yyyy FORMAT]
+[INFO: README USES mm/dd/yyyy FORMAT]  
 
 1st update [2.7.2019.]
 ----------------------------------------------------
