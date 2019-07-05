@@ -62,7 +62,7 @@ class DB {
 
         $conditionsQuery = "";
         $queryConditions = [];
-
+        
         foreach ($conditions as $key => $value) {
             $conditionsQuery .= "`{$key}`=? AND ";
             $queryConditions[] = $value;
