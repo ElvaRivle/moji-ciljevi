@@ -45,3 +45,8 @@ body {
     border-color: olive;
     padding: 5px 10px;
 }
+
+.dailyGoalDone {
+    text-decoration: line-through;
+    color: olive;
+}

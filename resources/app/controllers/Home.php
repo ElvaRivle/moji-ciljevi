@@ -23,6 +23,12 @@ class Home extends Controller {
             echo "USPJELO";
         else echo "NIJE USPJELO";
     }
+
+    public function remove_daily_goal_action($uname, $description, $type) {
+        if ($this->_model->remove_daily_goal($uname, $description, $type))
+            echo "USPJELO";
+        else echo "NIJE USPJELO";
+    }
 }
 
 

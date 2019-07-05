@@ -37,6 +37,18 @@ class Goals /*extends Model */{
         if ($result) return true;
         else return false;
     }
+
+    public function remove_daily_goal($uname, $description, $type) {
+        $result = $this->_db->delete($this->_tableName, [
+            'uname' => $uname,
+            'description' => $description,
+            'type' => $type,
+            'completed' => 1    
+        ]);
+
+        if ($result) return true;
+        else return false;
+    }
 }
 
 

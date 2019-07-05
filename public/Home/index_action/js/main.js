@@ -1,3 +1,5 @@
+let clickCnt = 0;
+
 function add_goal() {
 
     let text = document.getElementById("goalText").value;
@@ -12,8 +14,6 @@ function add_goal() {
 
 
     ajaxAdd.onreadystatechange = () => {
-        console.log(ajaxAdd.readyState);
-
         if (ajaxAdd.readyState == 4) {
             if (ajaxAdd.status === 200) {
                 if (ajaxAdd.responseText == "NIJE USPJELO"){
@@ -22,7 +22,7 @@ function add_goal() {
                 }
                 let node = document.createElement("div");
     
-                node.className = "dailyGoal";
+                node.className = "dailyGoal ";
                 node.innerHTML = text;  
 
                 document.getElementById("main").appendChild(node);
@@ -42,13 +42,13 @@ function add_goal() {
 }
 
 function remove_goal() {
+    clickCnt++;
     let ajaxRemove = new XMLHttpRequest;
 
     let text = this.innerHTML;
+    let textToSend = text.replace(/\s/g, '_');
 
     ajaxRemove.onreadystatechange = () => {
-        console.log(ajaxRemove.readyState);
-
         if (ajaxRemove.readyState == 4) {
             if (ajaxRemove.status === 200) {
                 if (ajaxRemove.responseText == "NIJE USPJELO"){
@@ -56,9 +56,9 @@ function remove_goal() {
                     return;
                 }
 
-
-                this.style.textDecoration = "line-through";
-                this.style.color = "olive";
+                this.className += "dailyGoalDone ";
+                
+                if (clickCnt === 3) this.remove();
             }
             else {
                 alert("Greška na serveru. Pokušajte kasnije");
@@ -66,11 +66,14 @@ function remove_goal() {
         }
     }
 
-    let textToSend = text.replace(/\s/g, '_');
-
-    
 
 
-    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/rusko/"+textToSend+"/daily");
-    ajaxRemove.send();
+    if (clickCnt === 1) {
+        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/rusko/"+textToSend+"/daily");
+        ajaxRemove.send();
+    }
+    else if (clickCnt === 3) {
+        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_daily_goal/rusko/"+textToSend+"/daily");
+        ajaxRemove.send();
+    }
 }
