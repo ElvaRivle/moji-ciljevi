@@ -8,9 +8,9 @@ class Home extends Controller {
         $this->_model = new Goals();
     }
 
-    public function index_action () {
+    public function daily_goals_action () {
         $this->_view->render_goals('daily');
-        $this->_view->render("index_action");   
+        $this->_view->render("daily_goals_action");   
     }
 
     public function add_goal_action($uname, $description, $type) {

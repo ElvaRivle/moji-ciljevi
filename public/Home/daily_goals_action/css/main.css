@@ -23,10 +23,13 @@ body {
 }
 
 #addBtn {
-    border-radius: 45%;
-    border-color: olive;
     margin-left: 10px;
-    height: 20px;
+    position: relative;
+    top: 6px;
+}
+
+#addBtn:hover {
+    cursor: pointer;
 }
 
 .dailyGoal {
@@ -44,6 +47,10 @@ body {
     border-style: solid;
     border-color: olive;
     padding: 5px 10px;
+}
+
+.dailyGoal:hover {
+    cursor: pointer;
 }
 
 .dailyGoalDone {
