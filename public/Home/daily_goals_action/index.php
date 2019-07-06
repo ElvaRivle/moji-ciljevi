@@ -15,6 +15,8 @@
 </head>
 <body>
 
+<i class="material-icons  large switch" onclick="location.href = '/moji-ciljevi/Home/life_goals'">apps</i>
+
 <div id="main">
     <h2 id="mainHeading">Moji dnevni ciljevi</h2>
     <div id="addNewGoal">

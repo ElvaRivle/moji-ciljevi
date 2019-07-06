@@ -76,11 +76,11 @@ function remove_goal(item) {
 
 
     if (item.dataset.clickCnt == 1) {
-        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/rusko/"+textToSend+"/daily");
+        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/elva/"+textToSend+"/daily");
         ajaxRemove.send();
     }
     else if (item.dataset.clickCnt == 3) {
-        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_daily_goal/rusko/"+textToSend+"/daily");
+        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_daily_goal/elva/"+textToSend+"/daily");
         ajaxRemove.send();
     }
 }
