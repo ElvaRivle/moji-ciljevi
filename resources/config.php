@@ -1,6 +1,8 @@
 <?php
 //all config goes here and only this will be loaded by index.php
 
+ini_alter('session.cookie_lifetime', '30');
+//dodaj i gc.lifetime
 
 require_once('bootstrap.php');
 require_once('helper_funcs.php');
