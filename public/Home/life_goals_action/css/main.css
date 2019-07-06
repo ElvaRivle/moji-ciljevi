@@ -3,7 +3,7 @@
 }
 
 body {
-    background: olive;
+    background: grey;
     margin: 0;
     padding: 0;
 }
@@ -48,7 +48,7 @@ body {
     cursor: pointer;
 }
 
-.dailyGoal {
+.lifeGoal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,15 +61,15 @@ body {
     margin-bottom: 20px;
     border-width: 2px;
     border-style: solid;
-    border-color: olive;
+    border-color: grey;
     padding: 5px 10px;
 }
 
-.dailyGoal:hover {
+.lifeGoal:hover {
     cursor: pointer;
 }
 
-.dailyGoalDone {
+.lifeGoalDone {
     text-decoration: line-through;
-    color: olive;
+    color: grey;
 }

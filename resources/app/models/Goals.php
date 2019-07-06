@@ -49,6 +49,17 @@ class Goals /*extends Model */{
         if ($result) return true;
         else return false;
     }
+
+    public function remove_life_goal($uname, $description, $type) {
+        $result = $this->_db->delete($this->_tableName, [
+            'uname' => $uname,
+            'description' => $description,
+            'type' => $type,   
+        ]);
+
+        if ($result) return true;
+        else return false;
+    }
 }
 
 

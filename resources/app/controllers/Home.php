@@ -9,8 +9,13 @@ class Home extends Controller {
     }
 
     public function daily_goals_action () {
-        $this->_view->render_goals('daily');
+        $this->_view->render_daily_goals();
         $this->_view->render("daily_goals_action");   
+    }
+
+    public function life_goals_action() {
+        $this->_view->render_life_goals();
+        $this->_view->render("life_goals_action");
     }
 
     public function add_goal_action($uname, $description, $type) {
@@ -27,6 +32,12 @@ class Home extends Controller {
 
     public function remove_daily_goal_action($uname, $description, $type) {
         if ($this->_model->remove_daily_goal($uname, $description, $type))
+            echo "USPJELO";
+        else echo "NIJE USPJELO";
+    }
+
+    public function remove_life_goal_action($uname, $description, $type) {
+        if ($this->_model->remove_life_goal($uname, $description, $type))
             echo "USPJELO";
         else echo "NIJE USPJELO";
     }

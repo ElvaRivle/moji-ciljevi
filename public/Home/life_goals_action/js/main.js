@@ -20,10 +20,8 @@ function add_goal() {
                 }
                 let node = document.createElement("div");
     
-                node.className = "dailyGoal ";
+                node.className = "lifeGoal ";
                 node.innerHTML = text; 
-                
-                node.dataset.clickCnt = 0;
 
                 document.getElementById("main").appendChild(node);
                 document.getElementById("goalText").value = "";
@@ -39,18 +37,12 @@ function add_goal() {
     }
 
     //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/elva/"+textToSend+"/daily");
+    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/elva/"+textToSend+"/life");
     ajaxAdd.send();
 }
 
 function remove_goal(item) {
     let ajaxRemove = new XMLHttpRequest;
-    
-    
-    
-    item.dataset.clickCnt++;
-
-    if(isNaN(item.dataset.clickCnt)) item.dataset.clickCnt = 1;
 
     let text = item.innerHTML;
     let textToSend = text.replace(/\s/g, '_');
@@ -63,9 +55,9 @@ function remove_goal(item) {
                     return;
                 }
 
-                item.className += "dailyGoalDone ";
+                item.className += "lifeGoalDone ";
                 
-                if (item.dataset.clickCnt == 3) item.remove();
+                item.remove();
             }
             else {
                 alert("Greška na serveru. Pokušajte kasnije");
@@ -75,12 +67,7 @@ function remove_goal(item) {
 
 
 
-    if (item.dataset.clickCnt == 1) {
-        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/elva/"+textToSend+"/daily");
-        ajaxRemove.send();
-    }
-    else if (item.dataset.clickCnt == 3) {
-        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_daily_goal/elva/"+textToSend+"/daily");
-        ajaxRemove.send();
-    }
+    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_life_goal/elva/"+textToSend+"/life");
+    ajaxRemove.send();
+    
 }

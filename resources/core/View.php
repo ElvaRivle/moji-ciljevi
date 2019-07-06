@@ -13,15 +13,31 @@ class View  {
         include(DIR."/public/{$this->_controller}/{$action}/index.php");
     }
 
-    public function render_goals($type) {
+    public function render_daily_goals() {
         $db = DB::get_instance();
         
-        $result = $db->query("SELECT * FROM goals WHERE `uname`='rusko' AND `type`='{$type}';");
+        $result = $db->query("SELECT * FROM goals WHERE `uname`='elva' AND `type`='daily';");
 
         for($i = 0; $i < count($result); $i++) {
             $this->_goals .= "<div class='dailyGoal ";
             if($result[$i]['completed'] == 1) {
                 $this->_goals .= "dailyGoalDone' data-click-cnt=\"1\"";
+            }
+            $this->_goals .= "' onclick=\"remove_goal(this)\">";
+            $this->_goals .= $result[$i]['description'].'</div>';
+        }
+        return;
+    }
+
+    public function render_life_goals() {
+        $db = DB::get_instance();
+        
+        $result = $db->query("SELECT * FROM goals WHERE `uname`='elva' AND `type`='life';");
+
+        for($i = 0; $i < count($result); $i++) {
+            $this->_goals .= "<div class='lifeGoal ";
+            if($result[$i]['completed'] == 1) {
+                $this->_goals .= "lifeGoalDone";
             }
             $this->_goals .= "' onclick=\"remove_goal(this)\">";
             $this->_goals .= $result[$i]['description'].'</div>';
