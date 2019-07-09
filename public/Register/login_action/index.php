@@ -17,11 +17,11 @@
     <form action="/moji-ciljevi/index.php" method="POST">
  
         <label for="uname">Unesite vaše korisničko ime:</label>
-        <input type="text" id="uname" name="uname">
-        <div id="error-handle"></div>
+        <input type="text" id="uname" name="uname" onkeyup="validate_uname(this)">
+        <div id="error-handle">Korisničko ime mora imati minimum 4 slova</div>
         <input type="submit" value="Unesi">
     </form>
 
-
+    <script src="js/main.js"></script>
 </body>
 </html>

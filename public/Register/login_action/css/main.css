@@ -24,3 +24,7 @@ label {
 [type="submit"] {
     font-size: 19px;
 }
+
+#error-handle {
+    font-size: 14px;
+}
