@@ -15,4 +15,9 @@ RedirectMatch 403 public/?$
 RedirectMatch 403 resources/?$
 
 
-RewriteRule ^(.+)$ index.php/$1 [L]
+RewriteRule ^(.+)$ index.php/$1 
+
+#RewriteRule ^(public/Register/add_user)(?uname=)(.+) index.php/$1/$3 [L]
+#RewriteCond %{REQUEST_METHOD}=POST
+
+#RewriteRule ^Register/add_user(?unname=)(.+)$ index.php/Register/add_user/$2 [L]

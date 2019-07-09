@@ -13,6 +13,7 @@ class View  {
         include(DIR."/public/{$this->_controller}/{$action}/index.php");
     }
 
+    //ove funkcije bi se trebale nekako odvojiti kao posebne za Home view, nema logike sve viewe držati ovdje
     public function render_daily_goals() {
         $db = DB::get_instance();
         
