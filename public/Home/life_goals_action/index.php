@@ -14,7 +14,7 @@
     <title>Moji Ciljevi</title>
 </head>
 <body>
-
+<div id="session" style="display:hidden; position:absolute; top:0; left:0; color: transparent;"><?=$_SESSION['uname']?></div>
 <i class="material-icons  large switch" onclick="location.href = '/moji-ciljevi/Home/daily_goals'">apps</i>
 
 <div id="main">

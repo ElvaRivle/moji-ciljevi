@@ -17,7 +17,7 @@ class Register extends Controller {
     }
 
     public function add_user_action($uname) {
-        $this->_model->add_user($uname); //debagaj ovdje
+        $this->_model->add_user($uname); 
         header('Location: /moci');
         exit();
     }

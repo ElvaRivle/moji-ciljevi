@@ -1,4 +1,5 @@
 function add_goal() {
+    const user = document.getElementById("session").innerHTML;
 
     let text = document.getElementById("goalText").value;
     let textToSend = text.replace(/\s/g, '_');
@@ -37,11 +38,12 @@ function add_goal() {
     }
 
     //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/elva/"+textToSend+"/life");
+    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/"+user+"/"+textToSend+"/life");
     ajaxAdd.send();
 }
 
 function remove_goal(item) {
+    const user = document.getElementById("session").innerHTML;
     let ajaxRemove = new XMLHttpRequest;
 
     let text = item.innerHTML;
@@ -67,7 +69,7 @@ function remove_goal(item) {
 
 
 
-    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_life_goal/elva/"+textToSend+"/life");
+    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_life_goal/"+user+"/"+textToSend+"/life");
     ajaxRemove.send();
     
 }
