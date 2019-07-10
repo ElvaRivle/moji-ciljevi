@@ -60,6 +60,20 @@ class Goals /*extends Model */{
         if ($result) return true;
         else return false;
     }
+
+    public function refresh_daily_goals($uname) {
+
+        $result = $this->_db->update($this->_tableName, [
+                'uname' => $uname,
+            ],
+            [
+                'completed' => 0
+            ]
+        );
+
+        if ($result) return true;
+        else return false;
+    }
 }
 
 

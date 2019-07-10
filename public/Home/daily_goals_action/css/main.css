@@ -16,6 +16,14 @@ body {
     font-size: 38px !important;
 }
 
+
+.switch-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 38px !important;
+}
+
 .switch:hover {
     cursor: pointer;
 }

@@ -18,6 +18,7 @@
 <div id="session" style="display:hidden; position:absolute; top:0; left:0; color: transparent;"><?=$_SESSION['uname']?></div>
 
 <i class="material-icons  large switch" onclick="location.href = '/moji-ciljevi/Home/life_goals'">apps</i>
+<i class="material-icons  large switch-right" onclick="refresh_goals()">autorenew</i>
 
 <div id="main">
     <h2 id="mainHeading">Moji dnevni ciljevi</h2>

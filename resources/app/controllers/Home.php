@@ -41,6 +41,12 @@ class Home extends Controller {
             echo "USPJELO";
         else echo "NIJE USPJELO";
     }
+
+    public function refresh_goals_action($uname) {
+        if ($this->_model->refresh_daily_goals($uname)) 
+            echo "USPJELO";
+        else echo "NIJE USPJELO";
+    }
 }
 
 
