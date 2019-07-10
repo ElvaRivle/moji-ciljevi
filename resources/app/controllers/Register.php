@@ -17,7 +17,7 @@ class Register extends Controller {
     }
 
     public function add_user_action($uname) {
-        $this->_model->add_user($uname); 
+        $this->_model->add_user($uname); //find a way to say to user that username is taken
         header('Location: /moci');
         exit();
     }

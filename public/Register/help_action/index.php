@@ -41,6 +41,7 @@
         <li>Nikakve druge vaše podatke nećemo tražiti</li>
         <li>Ako želite da vam se dnevni cilj ne prenese na sljedeći dan potrebno je da ga kliknete još 2 puta</li>
         <li>Ako se iz nekog razloga dnevni ciljevi nisu restartovali u sljedećem danu, u desnom donjem ćošku kliknite malu ikonicu</li>
+        <li>Ovu aplikaciju možete koristiti samo sa jednim uređajem. Ako je ne želite koristiti na ovom uređaju molimo pređite na drugi.</li>
     </ul>
 
     <hr>
