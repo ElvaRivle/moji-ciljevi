@@ -11,9 +11,9 @@ require_once('helper_funcs.php');
 
 define('DEFAULT_CONTROLLER', 'Home');
 define('DEFAULT_ACTION', 'daily_goals_action');
-
-define('DB_HOST', '127.0.0.1');
-define('DB_USER', 'root');
-define('DB_PASS', 'elvaroot');
+#napraviti novog korisnika na bazi, vezat ga i za localhost i za % i to staviti u user i pass
+define('DB_HOST', '192.168.0.202');
+define('DB_USER', '');
+define('DB_PASS', '');
 define('DB_NAME', 'moji_ciljevi');
 ?>

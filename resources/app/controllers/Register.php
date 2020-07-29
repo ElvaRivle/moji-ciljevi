@@ -18,7 +18,8 @@ class Register extends Controller {
 
     public function add_user_action($uname) {
         $this->_model->add_user($uname); //find a way to say to user that username is taken
-        header('Location: /moci');
+        header('Location: /moji-ciljevi');
+	#mozda moze ostati /moci kada dodamo server name i alias u apache konfiguraciju!
         exit();
     }
 }

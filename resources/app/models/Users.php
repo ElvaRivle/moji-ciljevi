@@ -18,8 +18,7 @@ class Users {
                 'uname' => $uname
             ]);
         }
-        else $result = false;
-
+	$result = true;
         if ($result) {
             $_SESSION['uname'] = $uname;
             return true;
