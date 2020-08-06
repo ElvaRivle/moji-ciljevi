@@ -5,7 +5,7 @@ My first project. Hopefully will improve it over time. (**Dobar vic zaista**)
 
 More in README in future   
 
-# NA OVOJ GRANI JE APSOLUTNA REFRAKTORIZACIJA APLIKACIJE, OD BAZE PODATAKA DO SAMOG RADA PROTOKA PODATAKA
+# NA OVOJ GRANI JE APSOLUTNA REFRAKTORIZACIJA APLIKACIJE, OD BAZE PODATAKA DO SAMOG RADA PROTOKA PODATAKA  
 
 
 1st update [2.7.2019.]
@@ -25,10 +25,6 @@ Happily finished first official phase of project.
   
   
 ## Treci update [22.7.2020.]  
-<<<<<<< HEAD
-=======
-### Dos'o ja nakon godinu dana, rekoh *'Sto ja ne bih ovo cudo ponovo instalirao...'*.
->>>>>>> 2f7e884a043cce163c4b8354e6709ec828155541
 KAKO OVO CUDO POSTAVITI DA RADI?????  
 Potrebna MySQL baza moji_ciljevi sa 2 tabele: users(id prim key auto inc i uname varchar) i goals (id prim key auto inc, uname varchar, type varchar, completed bool)  
 tu je i dump baze, no sikiriki  
