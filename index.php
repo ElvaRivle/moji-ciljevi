@@ -7,7 +7,7 @@ require_once(DIR."/resources/config.php");
 
 session_start();
 
-$url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'], '/')) : [];
+$url = isset($_SERVER['REQUEST_URI']) ? explode('/', ltrim($_SERVER['REQUEST_URI'], '/')) : [];
 
 
 if (!isset($_COOKIE['PHPSESSID']) && $url != ['Register', 'login']) $url = ['Register', 'help'];
