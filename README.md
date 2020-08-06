@@ -1,7 +1,7 @@
 # moji-ciljevi
 Simple app for goals in life
 
-My first project. Hopefully will improve it over time. (**Dobar vic zaista**)
+My first project. Hopefully will improve it over time.  
 
 More in README in future   
 
