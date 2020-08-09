@@ -38,7 +38,7 @@ function add_goal() {
     }
 
     //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/"+user+"/"+textToSend+"/life");
+    ajaxAdd.open("POST", "/Home/add_goal/"+user+"/"+textToSend+"/life");
     ajaxAdd.send();
 }
 
@@ -69,7 +69,7 @@ function remove_goal(item) {
 
 
 
-    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_life_goal/"+user+"/"+textToSend+"/life");
+    ajaxRemove.open("DELETE", "/Home/remove_life_goal/"+user+"/"+textToSend+"/life");
     ajaxRemove.send();
     
 }

@@ -26,7 +26,7 @@ Happily finished first official phase of project.
   
 ## Treci update [22.7.2020.]  
 KAKO OVO CUDO POSTAVITI DA RADI?????  
-Potrebna MySQL baza moji_ciljevi sa 2 tabele: users(id prim key auto inc i uname varchar) i goals (id prim key auto inc, uname varchar, type varchar, completed bool)  
+Potrebna MySQL baza moci sa 2 tabele: users(id prim key auto inc i uname varchar) i goals (id prim key auto inc, uname varchar, type varchar, completed bool)  
 tu je i dump baze, no sikiriki  
 U /etc/apache2/*glavni_conf_fajl*.conf namjesiti za /var/www direktorij AllowOverride All, da se dozvoli izvrsavanje .htaccess-a  
 takodjer, a2enmod rewrite i a2enmod headers, po zelji, ako se doda fajl u sites-avalaible, a2ensite 

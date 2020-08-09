@@ -41,7 +41,7 @@ function add_goal() {
     }
 
     //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/"+user+"/"+textToSend+"/daily");
+    ajaxAdd.open("POST", "/Home/add_goal/"+user+"/"+textToSend+"/daily");
     ajaxAdd.send();
 }
 
@@ -78,11 +78,11 @@ function remove_goal(item) {
 
 
     if (item.dataset.clickCnt == 1) {
-        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/"+user+"/"+textToSend+"/daily");
+        ajaxRemove.open("DELETE", "/Home/mark_daily_goal_done/"+user+"/"+textToSend+"/daily");
         ajaxRemove.send();
     }
     else if (item.dataset.clickCnt == 3) {
-        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_daily_goal/"+user+"/"+textToSend+"/daily");
+        ajaxRemove.open("DELETE", "/Home/remove_daily_goal/"+user+"/"+textToSend+"/daily");
         ajaxRemove.send();
     }
 }
@@ -110,6 +110,6 @@ function refresh_goals() {
     }
 
 
-    ajaxAdd.open("UPDATE", "/moji-ciljevi/Home/refresh_goals/"+user);
+    ajaxAdd.open("UPDATE", "/Home/refresh_goals/"+user);
     ajaxAdd.send();
 }
