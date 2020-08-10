@@ -7,15 +7,20 @@ require_once(DIR."/resources/config.php");
 
 session_start();
 
-$url = isset($_SERVER['REQUEST_URI']) ? explode('/', ltrim($_SERVER['REQUEST_URI'], '/')) : [];
+$url = ($_SERVER['REQUEST_URI'] !== '/') ? explode('/', ltrim($_SERVER['REQUEST_URI'], '/')) : [];
 
+if (!isset($_COOKIE['PHPSESSID'])) $url = ['Register', 'login'];
 
-if (!isset($_COOKIE['PHPSESSID']) && $url != ['Register', 'login']) $url = ['Register', 'help'];
-if (isset($_COOKIE['PHPSESSID']) && !isset($_SESSION['uname'])) $url = ['Register', 'login'];
-
-if (isset($_POST['uname'])) {
-    $url = ['Register','add_user',$_POST['uname']];
+else {
+    if (empty($url) && !isset($_SESSION['username']) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
+        $url = ['Register', 'login'];
+    }
+    else if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($url) && !isset($_SESSION['username'])) {
+        $url = ['Register', 'login_or_register_user', $_POST['username'], $_POST['password']];
+    }
 }
+
+if (empty($url) && isset($_SESSION['username'])) $url = [];
 
 
 

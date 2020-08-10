@@ -2,29 +2,32 @@
 //maybe add core Model.php in future?
 
 
-class Goals extends Model {
+class Daily_goals extends Model {
     public function __construct() {
         parent::__construct('daily_goals');
     }
 
-    public function add_goal($uname, $description, $type) {
+    public function add_goal($description) {
+        $this->_db = DB::get_instance();
+
+        $user = new Users();
+        //racunam da ovdje vec postoji korisnik, necu provjeravati
+        $user = $user->get_user($_SESSION['username']);
 
         $result = $this->_db->insert($this->_tableName, [
-            'uname' => $uname,
             'description' => $description,
-            'type' => $type
+            'user_id' => $user[0]['id']
         ]);
 
         if ($result) return true;
         else return false;
     }
 
-    public function mark_daily_goal_done($uname, $description, $type) {
+    public function mark_goal_done($description) {
 
         $result = $this->_db->update($this->_tableName, [
-                'uname' => $uname,
-                'description' => $description,
-                'type' => $type
+                'username' => $_SESSION['username'],
+                'description' => $description
             ],
             [
                 'completed' => 1
@@ -35,11 +38,10 @@ class Goals extends Model {
         else return false;
     }
 
-    public function remove_daily_goal($uname, $description, $type) {
+    public function remove_goal($description) {
         $result = $this->_db->delete($this->_tableName, [
-            'uname' => $uname,
+            'username' => $_SESSION['username'],
             'description' => $description,
-            'type' => $type,
             'completed' => 1    
         ]);
 
@@ -47,21 +49,10 @@ class Goals extends Model {
         else return false;
     }
 
-    public function remove_life_goal($uname, $description, $type) {
-        $result = $this->_db->delete($this->_tableName, [
-            'uname' => $uname,
-            'description' => $description,
-            'type' => $type,   
-        ]);
-
-        if ($result) return true;
-        else return false;
-    }
-
-    public function refresh_daily_goals($uname) {
+    public function refresh_daily_goals() {
 
         $result = $this->_db->update($this->_tableName, [
-                'uname' => $uname,
+                'username' => $_SESSION['username'],
             ],
             [
                 'completed' => 0

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="/moji-ciljevi/favicon.png">
+    <link rel="icon" href="/favicon.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
@@ -16,9 +16,15 @@
     <h1>Moji ciljevi</h1>
     <form action="/" method="POST">
  
-        <label for="uname">Unesite vaše korisničko ime:</label>
-        <input type="text" id="uname" name="uname" onkeyup="validate_uname(this)">
-        <div id="error-handle">Korisničko ime mora imati minimum 4 slova</div>
+        <div class="inputField">
+            <label for="username">Korisničko ime:</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div class="inputField">
+            <label for="password">Šifra:</label>
+            <input type="password" id='password' name='password'>
+        </div>
+        <p id='greska'><?=$error?></p>
         <input type="submit" value="Unesi">
     </form>
 

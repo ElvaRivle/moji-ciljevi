@@ -9,7 +9,7 @@ class View  {
         $this->_controller = $controller;
     }
 
-    public function render($action) {
+    public function render($action, $error = "") {
         include(DIR."/public/{$this->_controller}/{$action}/index.php");
     }
 

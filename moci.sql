@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Linux (x86_64)
 --
--- Host: localhost    Database: moji_ciljevi
+-- Host: localhost    Database: moci
 -- ------------------------------------------------------
--- Server version	8.0.21
+-- Server version	8.0.21-0ubuntu0.20.04.4
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,29 +16,56 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `goals`
+-- Table structure for table `daily_goals`
 --
 
-DROP TABLE IF EXISTS `goals`;
+DROP TABLE IF EXISTS `daily_goals`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `goals` (
+CREATE TABLE `daily_goals` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `uname` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `completed` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `description` varchar(200) NOT NULL,
+  `completed` tinyint(1) NOT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `daily_goals_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `goals`
+-- Dumping data for table `daily_goals`
 --
 
-LOCK TABLES `goals` WRITE;
-/*!40000 ALTER TABLE `goals` DISABLE KEYS */;
-/*!40000 ALTER TABLE `goals` ENABLE KEYS */;
+LOCK TABLES `daily_goals` WRITE;
+/*!40000 ALTER TABLE `daily_goals` DISABLE KEYS */;
+/*!40000 ALTER TABLE `daily_goals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `life_goals`
+--
+
+DROP TABLE IF EXISTS `life_goals`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `life_goals` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(200) NOT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `life_goals_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `life_goals`
+--
+
+LOCK TABLES `life_goals` WRITE;
+/*!40000 ALTER TABLE `life_goals` DISABLE KEYS */;
+/*!40000 ALTER TABLE `life_goals` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -50,9 +77,10 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `uname` varchar(255) DEFAULT NULL,
+  `username` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +89,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'elva');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -74,4 +101,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-22 22:49:04
+-- Dump completed on 2020-08-10 22:52:32
