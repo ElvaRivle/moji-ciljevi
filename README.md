@@ -32,4 +32,4 @@ U /etc/apache2/apache2.conf namjesiti za /var/www direktorij AllowOverride All, 
 takodjer, a2enmod rewrite i a2enmod headers  
 Nakon toga, dodati *moci_sites_available.conf* u /etc/apache2/sites-available/moci.conf  
 ukljuciti vhost sa a2ensite moci i restart apache-a  
-i nakon toga pristupiti aplikaciji na http://www.moci.ba  
+i nakon toga pristupiti aplikaciji na http://www.moci.ba 
