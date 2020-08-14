@@ -49,7 +49,7 @@ class Daily_goals extends Model {
         else return false;
     }
 
-    public function refresh_daily_goals() {
+    public function refresh_goals() {
 
         $result = $this->_db->update($this->_tableName, [
                 'username' => $_SESSION['username'],
