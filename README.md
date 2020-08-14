@@ -29,7 +29,7 @@ KAKO OVO CUDO POSTAVITI DA RADI?????
 Potrebna MySQL baza moci, tu je dump baze  
 Uz bazu potrebno je napraviti korisnika u MySQL sa username *moci* i sifrom *moci123*    
 U /etc/apache2/apache2.conf namjesiti za /var/www direktorij AllowOverride All, da se dozvoli izvrsavanje .htaccess-a  
-takodjer, a2enmod rewrite i a2enmod headers 
+takodjer, a2enmod rewrite i a2enmod headers  
 Nakon toga, dodati *moci_sites_available.conf* u /etc/apache2/sites-available/moci.conf  
 ukljuciti vhost sa a2ensite moci i restart apache-a  
 i nakon toga pristupiti aplikacija na http://www.moci.ba  
