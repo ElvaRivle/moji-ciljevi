@@ -1,5 +1,4 @@
 function add_goal() {
-    const user = document.getElementById("session").innerHTML;
 
     let text = document.getElementById("goalText").value;
     let textToSend = text.replace(/\s/g, '_');
@@ -15,14 +14,16 @@ function add_goal() {
     ajaxAdd.onreadystatechange = () => {
         if (ajaxAdd.readyState == 4) {
             if (ajaxAdd.status === 200) {
-                if (ajaxAdd.responseText == "NIJE USPJELO"){
+                if (ajaxAdd.responseText != "USPJELO"){
                     alert("Greška na serveru. Pokušajte kasnije");
                     return;
                 }
                 let node = document.createElement("div");
     
-                node.className = "lifeGoal ";
+                node.className = "dailyGoal ";
                 node.innerHTML = text; 
+                
+                node.dataset.clickCnt = 0;
 
                 document.getElementById("main").appendChild(node);
                 document.getElementById("goalText").value = "";
@@ -37,14 +38,16 @@ function add_goal() {
         }
     }
 
-    //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/"+user+"/"+textToSend+"/life");
+    ajaxAdd.open("POST", "/DailyGoalsController/add_goal/"+textToSend);
     ajaxAdd.send();
 }
 
 function remove_goal(item) {
-    const user = document.getElementById("session").innerHTML;
     let ajaxRemove = new XMLHttpRequest;
+    
+    item.dataset.clickCnt++;
+
+    if(isNaN(item.dataset.clickCnt)) item.dataset.clickCnt = 1;
 
     let text = item.innerHTML;
     let textToSend = text.replace(/\s/g, '_');
@@ -52,14 +55,14 @@ function remove_goal(item) {
     ajaxRemove.onreadystatechange = () => {
         if (ajaxRemove.readyState == 4) {
             if (ajaxRemove.status === 200) {
-                if (ajaxRemove.responseText == "NIJE USPJELO"){
+                if (ajaxRemove.responseText != "USPJELO"){
                     alert("Greška na serveru. Pokušajte kasnije");
                     return;
                 }
 
-                item.className += "lifeGoalDone ";
+                item.className += "dailyGoalDone ";
                 
-                item.remove();
+                if (item.dataset.clickCnt == 3) item.remove();
             }
             else {
                 alert("Greška na serveru. Pokušajte kasnije");
@@ -69,7 +72,37 @@ function remove_goal(item) {
 
 
 
-    ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_life_goal/"+user+"/"+textToSend+"/life");
-    ajaxRemove.send();
-    
+    if (item.dataset.clickCnt == 1) {
+        ajaxRemove.open("DELETE", "/DailyGoalsController/mark_goal_done/"+textToSend);
+        ajaxRemove.send();
+    }
+    else if (item.dataset.clickCnt == 3) {
+        ajaxRemove.open("DELETE", "/DailyGoalsController/remove_goal/"+textToSend);
+        ajaxRemove.send();
+    }
+}
+
+function refresh_goals() {
+
+    let ajaxAdd = new XMLHttpRequest();
+
+
+    ajaxAdd.onreadystatechange = () => {
+        if (ajaxAdd.readyState == 4) {
+            if (ajaxAdd.status === 200) {
+                if (ajaxAdd.responseText != "USPJELO"){
+                    alert("Greška na serveru. Pokušajte kasnije");
+                    return;
+                }
+                location.reload();
+            }
+            else {
+                alert("Greška na serveru. Pokušajte kasnije");
+            }
+        }
+    }
+
+
+    ajaxAdd.open("UPDATE", "/DailyGoalsController/refresh_goals");
+    ajaxAdd.send();
 }

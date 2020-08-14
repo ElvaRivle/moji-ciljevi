@@ -1,14 +1,13 @@
 # moji-ciljevi
 Simple app for goals in life
 
-My first project. Hopefully will improve it over time. 
+My first project. Hopefully will improve it over time.  
 
 More in README in future   
 
-**Aplikacija je bila jako traljavo i lose napisana 2019-te.**
-**Zbog toga je na master grani odradjena refrakt. koda.**
-**Koliko je ta refrakt kvalitetna vrlo je upitno, ali je definitivno bolje od ovoga.**
-**Ovaj stari kod ostavljam ovdje (necu raditi merge) cisto za uspomenu**
+# Izvrsena potpuna refraktorizacija aplikacije u smislu bolje organizacije koda i malo bolje sljedjenje MVC-a, kao i baze podataka    
+# Na grani stari-kod se nalazi prvobitna verzija aplikacije, cisto radi buduce nostalgije  
+
 
 1st update [2.7.2019.]
 ----------------------------------------------------
@@ -28,4 +27,10 @@ Happily finished first official phase of project.
   
 ## Treci update [22.7.2020.]  
 KAKO OVO CUDO POSTAVITI DA RADI?????  
-Objasnjeno u grani *master*  
+Potrebna MySQL baza moci, tu je dump baze  
+Uz bazu potrebno je napraviti korisnika u MySQL sa username *moci* i sifrom *moci123*    
+U /etc/apache2/apache2.conf namjesiti za /var/www direktorij AllowOverride All, da se dozvoli izvrsavanje .htaccess-a  
+takodjer, a2enmod rewrite i a2enmod headers  
+Nakon toga, dodati *moci_sites_available.conf* u /etc/apache2/sites-available/moci.conf  
+ukljuciti vhost sa a2ensite moci i restart apache-a  
+i nakon toga pristupiti aplikaciji na http://www.moci.ba 

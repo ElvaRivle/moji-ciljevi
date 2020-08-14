@@ -9,11 +9,11 @@ ini_alter('session.gc_lifetime', '31556926');
 require_once('bootstrap.php');
 require_once('helper_funcs.php');
 
-define('DEFAULT_CONTROLLER', 'Home');
-define('DEFAULT_ACTION', 'daily_goals_action');
+define('DEFAULT_CONTROLLER', 'DailyGoalsController');
+define('DEFAULT_ACTION', 'index_action');
 #napraviti novog korisnika na bazi, vezat ga i za localhost i za % i to staviti u user i pass
-define('DB_HOST', '192.168.0.202');
-define('DB_USER', '');
-define('DB_PASS', '');
-define('DB_NAME', 'moji_ciljevi');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'moci');
+define('DB_PASS', 'moci123');
+define('DB_NAME', 'moci');
 ?>

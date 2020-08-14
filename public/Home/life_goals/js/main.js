@@ -1,7 +1,5 @@
 function add_goal() {
 
-    const user = document.getElementById("session").innerHTML;
-
     let text = document.getElementById("goalText").value;
     let textToSend = text.replace(/\s/g, '_');
     document.getElementById("goalText").innerHTML = "";
@@ -22,10 +20,8 @@ function add_goal() {
                 }
                 let node = document.createElement("div");
     
-                node.className = "dailyGoal ";
+                node.className = "lifeGoal ";
                 node.innerHTML = text; 
-                
-                node.dataset.clickCnt = 0;
 
                 document.getElementById("main").appendChild(node);
                 document.getElementById("goalText").value = "";
@@ -40,19 +36,13 @@ function add_goal() {
         }
     }
 
-    //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/moji-ciljevi/Home/add_goal/"+user+"/"+textToSend+"/daily");
+    debugger;
+    ajaxAdd.open("POST", "/LifeGoalsController/add_goal/"+textToSend);
     ajaxAdd.send();
 }
 
 function remove_goal(item) {
     let ajaxRemove = new XMLHttpRequest;
-    
-    const user = document.getElementById("session").innerHTML;
-    
-    item.dataset.clickCnt++;
-
-    if(isNaN(item.dataset.clickCnt)) item.dataset.clickCnt = 1;
 
     let text = item.innerHTML;
     let textToSend = text.replace(/\s/g, '_');
@@ -65,9 +55,9 @@ function remove_goal(item) {
                     return;
                 }
 
-                item.className += "dailyGoalDone ";
+                item.className += "lifeGoalDone ";
                 
-                if (item.dataset.clickCnt == 3) item.remove();
+                item.remove();
             }
             else {
                 alert("Greška na serveru. Pokušajte kasnije");
@@ -77,39 +67,7 @@ function remove_goal(item) {
 
 
 
-    if (item.dataset.clickCnt == 1) {
-        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/mark_daily_goal_done/"+user+"/"+textToSend+"/daily");
-        ajaxRemove.send();
-    }
-    else if (item.dataset.clickCnt == 3) {
-        ajaxRemove.open("DELETE", "/moji-ciljevi/Home/remove_daily_goal/"+user+"/"+textToSend+"/daily");
-        ajaxRemove.send();
-    }
-}
-
-function refresh_goals() {
-
-    const user = document.getElementById("session").innerHTML;
-
-    let ajaxAdd = new XMLHttpRequest();
-
-
-    ajaxAdd.onreadystatechange = () => {
-        if (ajaxAdd.readyState == 4) {
-            if (ajaxAdd.status === 200) {
-                if (ajaxAdd.responseText == "NIJE USPJELO"){
-                    alert("Greška na serveru. Pokušajte kasnije");
-                    return;
-                }
-                location.reload();
-            }
-            else {
-                alert("Greška na serveru. Pokušajte kasnije");
-            }
-        }
-    }
-
-
-    ajaxAdd.open("UPDATE", "/moji-ciljevi/Home/refresh_goals/"+user);
-    ajaxAdd.send();
+    ajaxRemove.open("DELETE", "/LifeGoalsController/remove_goal/"+textToSend);
+    ajaxRemove.send();
+    
 }
