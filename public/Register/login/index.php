@@ -26,7 +26,7 @@
         </div>
         <p id='greska'>
         <?
-            echo (isset($params['greska'])) ? $params['greska'] : '';
+            echo (isset($params['errors'])) ? $params['errors'] : '';
         ?>
         </p>
         <input type="submit" value="Unesi">

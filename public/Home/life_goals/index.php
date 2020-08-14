@@ -14,8 +14,7 @@
     <title>Moji Ciljevi</title>
 </head>
 <body>
-<div id="session" style="display:hidden; position:absolute; top:0; left:0; color: transparent;"><?=$_SESSION['uname']?></div>
-<i class="material-icons  large switch" onclick="location.href = '/Home/daily_goals'">apps</i>
+<i class="material-icons  large switch" onclick="location.href = '/DailyGoalsController/index'">apps</i>
 
 <div id="main">
     <h2 id="mainHeading">Moji životni ciljevi</h2>
@@ -24,7 +23,17 @@
         <!--<button id="addBtn" onclick="add_goal()">+</button>-->
         <i class="material-icons" id="addBtn" onclick="add_goal()">add_circle</i>
     </div>
-    <?=$this->_goals;?>  
+    <?
+        foreach ($params['goals'] as $goal) {
+            echo '<div class=\'lifeGoal ';
+            /*if ($goal['completed'] == 1) {
+                echo 'lifeGoaldone\'';
+            }
+            */
+            echo '\' onclick=\'remove_goal(this)\'>';
+            echo "{$goal['description']}</div>";
+        }
+    ?>  
 </div>
 
 

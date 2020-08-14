@@ -1,5 +1,4 @@
 function add_goal() {
-    const user = document.getElementById("session").innerHTML;
 
     let text = document.getElementById("goalText").value;
     let textToSend = text.replace(/\s/g, '_');
@@ -37,13 +36,12 @@ function add_goal() {
         }
     }
 
-    //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/Home/add_goal/"+user+"/"+textToSend+"/life");
+    debugger;
+    ajaxAdd.open("POST", "/LifeGoalsController/add_goal/"+textToSend);
     ajaxAdd.send();
 }
 
 function remove_goal(item) {
-    const user = document.getElementById("session").innerHTML;
     let ajaxRemove = new XMLHttpRequest;
 
     let text = item.innerHTML;
@@ -69,7 +67,7 @@ function remove_goal(item) {
 
 
 
-    ajaxRemove.open("DELETE", "/Home/remove_life_goal/"+user+"/"+textToSend+"/life");
+    ajaxRemove.open("DELETE", "/LifeGoalsController/remove_goal/"+textToSend);
     ajaxRemove.send();
     
 }

@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<i class="material-icons  large switch" onclick="location.href = '/Home/life_goals'">apps</i>
+<i class="material-icons  large switch" onclick="location.href = '/LifeGoalsController/index'">apps</i>
 <i class="material-icons  large switch-right" onclick="refresh_goals()">autorenew</i>
 
 <div id="main">
