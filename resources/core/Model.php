@@ -1,7 +1,7 @@
 <?php
 
 class Model {
-    private $_tableName, $_db;
+    protected $_tableName, $_db;
 
     public function __construct($tableName) {
         $this->_tableName = $tableName;

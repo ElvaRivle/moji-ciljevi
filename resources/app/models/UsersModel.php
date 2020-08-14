@@ -8,7 +8,7 @@ class UsersModel extends Model {
     }
 
     public function get_user($username) {
-        return $this->_db->query("SELECT * FROM users WHERE `username`={$username}");
+        return $this->_db->query("SELECT * FROM users WHERE `username`='{$username}'");
     }
 
     public function add_user($username, $password) {

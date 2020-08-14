@@ -1,7 +1,5 @@
 function add_goal() {
 
-    const user = document.getElementById("session").innerHTML;
-
     let text = document.getElementById("goalText").value;
     let textToSend = text.replace(/\s/g, '_');
     document.getElementById("goalText").innerHTML = "";
@@ -40,15 +38,12 @@ function add_goal() {
         }
     }
 
-    //SEND LOGGED IN UNAME (LATER IN PROJECT)
-    ajaxAdd.open("POST", "/Home/add_goal/"+user+"/"+textToSend+"/daily");
+    ajaxAdd.open("POST", "/DailyGoalsController/add_goal/"+textToSend);
     ajaxAdd.send();
 }
 
 function remove_goal(item) {
     let ajaxRemove = new XMLHttpRequest;
-    
-    const user = document.getElementById("session").innerHTML;
     
     item.dataset.clickCnt++;
 
@@ -78,18 +73,16 @@ function remove_goal(item) {
 
 
     if (item.dataset.clickCnt == 1) {
-        ajaxRemove.open("DELETE", "/Home/mark_daily_goal_done/"+user+"/"+textToSend+"/daily");
+        ajaxRemove.open("DELETE", "/DailyGoalsController/mark_goal_done/"+textToSend);
         ajaxRemove.send();
     }
     else if (item.dataset.clickCnt == 3) {
-        ajaxRemove.open("DELETE", "/Home/remove_daily_goal/"+user+"/"+textToSend+"/daily");
+        ajaxRemove.open("DELETE", "/DailyGoalsController/remove_goal/"+textToSend);
         ajaxRemove.send();
     }
 }
 
 function refresh_goals() {
-
-    const user = document.getElementById("session").innerHTML;
 
     let ajaxAdd = new XMLHttpRequest();
 
@@ -110,6 +103,6 @@ function refresh_goals() {
     }
 
 
-    ajaxAdd.open("UPDATE", "/Home/refresh_goals/"+user);
+    ajaxAdd.open("UPDATE", "/DailyGoalsController/refresh_goals");
     ajaxAdd.send();
 }

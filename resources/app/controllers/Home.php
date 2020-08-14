@@ -1,7 +1,6 @@
 <?php
 
 class Home extends Controller {
-    private $_model;
 
     public function __construct(/* ubuduce moglo bi se ubaciti koji tacno model zelimo za taj request, nece mozda uvijek biti goals */) {
         parent::__construct("Home");
