@@ -6,7 +6,7 @@ My first project. Hopefully will improve it over time.
 More in README in future   
 
 **Aplikacija je bila jako traljavo i lose napisana 2019-te.**
-**Zbog toga je na grani masovna-refraktorizacija odradjena refrakt. koda.**
+**Zbog toga je na master grani odradjena refrakt. koda.**
 **Koliko je ta refrakt kvalitetna vrlo je upitno, ali je definitivno bolje od ovoga.**
 **Ovaj stari kod ostavljam ovdje (necu raditi merge) cisto za uspomenu**
 
@@ -28,4 +28,4 @@ Happily finished first official phase of project.
   
 ## Treci update [22.7.2020.]  
 KAKO OVO CUDO POSTAVITI DA RADI?????  
-Objasnjeno u grani *masovna-refraktorizacija*  
+Objasnjeno u grani *master*  
