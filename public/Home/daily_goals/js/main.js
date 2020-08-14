@@ -14,7 +14,7 @@ function add_goal() {
     ajaxAdd.onreadystatechange = () => {
         if (ajaxAdd.readyState == 4) {
             if (ajaxAdd.status === 200) {
-                if (ajaxAdd.responseText == "NIJE USPJELO"){
+                if (ajaxAdd.responseText != "USPJELO"){
                     alert("Greška na serveru. Pokušajte kasnije");
                     return;
                 }
@@ -55,7 +55,7 @@ function remove_goal(item) {
     ajaxRemove.onreadystatechange = () => {
         if (ajaxRemove.readyState == 4) {
             if (ajaxRemove.status === 200) {
-                if (ajaxRemove.responseText == "NIJE USPJELO"){
+                if (ajaxRemove.responseText != "USPJELO"){
                     alert("Greška na serveru. Pokušajte kasnije");
                     return;
                 }
@@ -90,7 +90,7 @@ function refresh_goals() {
     ajaxAdd.onreadystatechange = () => {
         if (ajaxAdd.readyState == 4) {
             if (ajaxAdd.status === 200) {
-                if (ajaxAdd.responseText == "NIJE USPJELO"){
+                if (ajaxAdd.responseText != "USPJELO"){
                     alert("Greška na serveru. Pokušajte kasnije");
                     return;
                 }

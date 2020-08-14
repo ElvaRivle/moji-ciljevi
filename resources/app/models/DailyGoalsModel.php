@@ -32,9 +32,13 @@ class DailyGoalsModel extends Model {
     }
 
     public function mark_goal_done($description) {
+        $this->_db = DB::get_instance();
+        $user = new UsersModel();
+        $user = $user->get_user($_SESSION['username']);
+        $userID = $user[0]['id'];
 
         $result = $this->_db->update($this->_tableName, [
-                'username' => $_SESSION['username'],
+                'user_id' => $userID,
                 'description' => $description
             ],
             [
@@ -47,8 +51,13 @@ class DailyGoalsModel extends Model {
     }
 
     public function remove_goal($description) {
+        $this->_db = DB::get_instance();
+        $user = new UsersModel();
+        $user = $user->get_user($_SESSION['username']);
+        $userID = $user[0]['id'];
+
         $result = $this->_db->delete($this->_tableName, [
-            'username' => $_SESSION['username'],
+            'user_id' => $userID,
             'description' => $description,
             'completed' => 1
         ]);
@@ -58,9 +67,13 @@ class DailyGoalsModel extends Model {
     }
 
     public function refresh_goals() {
+        $this->_db = DB::get_instance();
+        $user = new UsersModel();
+        $user = $user->get_user($_SESSION['username']);
+        $userID = $user[0]['id'];
 
         $result = $this->_db->update($this->_tableName, [
-                'username' => $_SESSION['username'],
+                'user_id' => $userID,
             ],
             [
                 'completed' => 0

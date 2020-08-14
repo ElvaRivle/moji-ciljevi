@@ -21,6 +21,28 @@ class DailyGoalsController extends Controller {
         }
         else echo "NIJE USPJELO";
     }
+
+    //ajax
+    public function remove_goal_action($description) {
+        if ($this->_model->remove_goal($description)) {
+            echo "USPJELO";
+        }
+        else echo 'NIJE USPJELO';
+    }
+
+    //ajax
+    public function mark_goal_done_action($description) {
+        if ($this->_model->mark_goal_done($description)) 
+            echo "USPJELO";
+        else echo "NIJE USPJELO";
+    }
+
+    //ajax
+    public function refresh_goals_action() {
+        if ($this->_model->refresh_goals()) 
+            echo "USPJELO";
+        else echo "NIJE USPJELO";
+    }
 }
 
 
