@@ -5,7 +5,8 @@ My first project. Hopefully will improve it over time.
 
 More in README in future   
 
-# NA OVOJ GRANI JE APSOLUTNA REFRAKTORIZACIJA APLIKACIJE, OD BAZE PODATAKA DO SAMOG RADA PROTOKA PODATAKA  
+# Izvrsena potpuna refraktorizacija aplikacije u smislu bolje organizacije koda i malo bolje sljedjenje MVC-a, kao i baze podataka    
+# Na grani stari-kod se nalazi prvobitna verzija aplikacije, cisto radi buduce nostalgije  
 
 
 1st update [2.7.2019.]
