@@ -1,8 +1,7 @@
 <?php
-//maybe add core Model.php in future?
 
 
-class Daily_goals extends Model {
+class DailyGoalsModel extends Model {
     public function __construct() {
         parent::__construct('daily_goals');
     }
@@ -10,13 +9,14 @@ class Daily_goals extends Model {
     public function add_goal($description) {
         $this->_db = DB::get_instance();
 
-        $user = new Users();
+        $user = new UsersModel();
         //racunam da ovdje vec postoji korisnik, necu provjeravati
         $user = $user->get_user($_SESSION['username']);
 
         $result = $this->_db->insert($this->_tableName, [
             'description' => $description,
-            'user_id' => $user[0]['id']
+            'user_id' => $user[0]['id'],
+            'completed' => 0
         ]);
 
         if ($result) return true;
@@ -42,7 +42,7 @@ class Daily_goals extends Model {
         $result = $this->_db->delete($this->_tableName, [
             'username' => $_SESSION['username'],
             'description' => $description,
-            'completed' => 1    
+            'completed' => 1
         ]);
 
         if ($result) return true;

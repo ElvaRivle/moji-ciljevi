@@ -1,23 +1,24 @@
 <?php
 
 class View  {
-    protected $_body, $_outBuffer, $_goals="";
+    
+    //protected $_body, $_outBuffer, 
+    protected $_goals="";
     //protected $_head, $_siteTitle, $_layout;
-    private $_controller;
 
-    public function __construct($controller) {
-        $this->_controller = $controller;
+    public function render($templatePath, $params = []) {
+        ob_start();
+        include(DIR."/public/{$templatePath}/index.php");
+        ob_flush();
     }
 
-    public function render($action, $error = "") {
-        include(DIR."/public/{$this->_controller}/{$action}/index.php");
-    }
-
-    //ove funkcije bi se trebale nekako odvojiti kao posebne za Home view, nema logike sve viewe držati ovdje
+    //funkcionalnost ovih funkcija samo premjestiti u index.php posebnih view-ova
+    //tamo napraviti for petlje, dodati sta treba...
+    //naravno, iz kontrolera izvuci ciljeve, sigurno ne odavde i to poslati u template
     public function render_daily_goals() {
         $db = DB::get_instance();
         
-        $result = $db->query("SELECT * FROM goals WHERE `uname`='{$_SESSION['uname']}' AND `type`='daily';");
+        $result = $db->query("SELECT * FROM goals WHERE `username`='{$_SESSION['username']}' AND `type`='daily';");
 
         for($i = 0; $i < count($result); $i++) {
             $this->_goals .= "<div class='dailyGoal ";
@@ -33,7 +34,7 @@ class View  {
     public function render_life_goals() {
         $db = DB::get_instance();
         
-        $result = $db->query("SELECT * FROM goals WHERE `uname`='{$_SESSION['uname']}' AND `type`='life';");
+        $result = $db->query("SELECT * FROM goals WHERE `username`='{$_SESSION['username']}' AND `type`='life';");
 
         for($i = 0; $i < count($result); $i++) {
             $this->_goals .= "<div class='lifeGoal ";

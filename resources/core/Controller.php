@@ -1,10 +1,11 @@
 <?php
 
 class Controller {
-    protected $_view;
+    protected $_model, $_view;
 
-    public function __construct($controllerName) {
-        $this->_view = new View($controllerName);
+    public function __construct($model) {
+        $this->_model = $model;
+        $this->_view = new View();
     }
 }
 

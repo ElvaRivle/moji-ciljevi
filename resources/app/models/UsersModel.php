@@ -1,12 +1,10 @@
 <?php
 
-class Users {
-    private $_tableName, $_db;
+class UsersModel extends Model {
 
     public function __construct()
     {
-        $this->_tableName = 'users';
-        $this->_db = DB::get_instance();
+        parent::__construct('users');
     }
 
     public function get_user($username) {
