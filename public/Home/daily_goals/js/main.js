@@ -38,7 +38,7 @@ function add_goal() {
         }
     }
 
-    ajaxAdd.open("POST", "/DailyGoalsController/add_goal/"+textToSend);
+    ajaxAdd.open("POST", "/DailyGoals/add_goal/"+textToSend);
     ajaxAdd.send();
 }
 
@@ -73,11 +73,11 @@ function remove_goal(item) {
 
 
     if (item.dataset.clickCnt == 1) {
-        ajaxRemove.open("DELETE", "/DailyGoalsController/mark_goal_done/"+textToSend);
+        ajaxRemove.open("DELETE", "/DailyGoals/mark_goal_done/"+textToSend);
         ajaxRemove.send();
     }
     else if (item.dataset.clickCnt == 3) {
-        ajaxRemove.open("DELETE", "/DailyGoalsController/remove_goal/"+textToSend);
+        ajaxRemove.open("DELETE", "/DailyGoals/remove_goal/"+textToSend);
         ajaxRemove.send();
     }
 }
@@ -103,6 +103,6 @@ function refresh_goals() {
     }
 
 
-    ajaxAdd.open("UPDATE", "/DailyGoalsController/refresh_goals");
+    ajaxAdd.open("UPDATE", "/DailyGoals/refresh_goals");
     ajaxAdd.send();
 }

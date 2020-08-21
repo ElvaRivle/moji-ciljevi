@@ -9,14 +9,14 @@ session_start();
 
 $url = ($_SERVER['REQUEST_URI'] !== '/') ? explode('/', ltrim($_SERVER['REQUEST_URI'], '/')) : [];
 
-if (!isset($_COOKIE['PHPSESSID'])) $url = ['AuthenticationController', 'index'];
+if (!isset($_COOKIE['PHPSESSID'])) $url = ['Authentication', 'index'];
 
 else {
     if (empty($url) && !isset($_SESSION['username']) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
-        $url = ['AuthenticationController', 'index'];
+        $url = ['Authentication', 'index'];
     }
     else if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($url) && !isset($_SESSION['username'])) {
-        $url = ['AuthenticationController', 'login_or_register_user', $_POST['username'], $_POST['password']];
+        $url = ['Authentication', 'login_or_register_user', $_POST['username'], $_POST['password']];
     }
 }
 

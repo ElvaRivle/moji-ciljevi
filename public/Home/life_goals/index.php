@@ -14,7 +14,7 @@
     <title>Moji Ciljevi</title>
 </head>
 <body>
-<i class="material-icons  large switch" onclick="location.href = '/DailyGoalsController/index'">apps</i>
+<i class="material-icons  large switch" onclick="location.href = '/DailyGoals/index'">apps</i>
 
 <div id="main">
     <h2 id="mainHeading">Moji životni ciljevi</h2>
