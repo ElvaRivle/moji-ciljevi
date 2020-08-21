@@ -31,6 +31,7 @@ Happily finished first official phase of project.
 KAKO OVO CUDO POSTAVITI DA RADI?????  
 Potrebna MySQL baza moci, tu je dump baze  
 Uz bazu potrebno je napraviti korisnika u MySQL sa username *moci* i sifrom *moci123*    
+Cron fajl dodati negdje gdje se cron jobovi izvrsavaju  
 U /etc/apache2/apache2.conf namjesiti za /var/www direktorij AllowOverride All, da se dozvoli izvrsavanje .htaccess-a  
 takodjer, a2enmod rewrite i a2enmod headers  
 Nakon toga, dodati *moci_sites_available.conf* u /etc/apache2/sites-available/moci.conf  
