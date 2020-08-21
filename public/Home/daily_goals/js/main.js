@@ -10,6 +10,9 @@ function add_goal() {
 
     let ajaxAdd = new XMLHttpRequest();
 
+    text = text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    textToSend = textToSend.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+
 
     ajaxAdd.onreadystatechange = () => {
         if (ajaxAdd.readyState == 4) {

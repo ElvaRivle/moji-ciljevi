@@ -8,6 +8,9 @@ function add_goal() {
         return;
     }
 
+    text = text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    textToSend = textToSend.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+
     let ajaxAdd = new XMLHttpRequest();
 
 
@@ -36,8 +39,8 @@ function add_goal() {
         }
     }
 
-    debugger;
-    ajaxAdd.open("POST", "/LifeGoalsController/add_goal/"+textToSend);
+    
+    ajaxAdd.open("POST", "/LifeGoals/add_goal/"+textToSend);
     ajaxAdd.send();
 }
 
@@ -67,7 +70,7 @@ function remove_goal(item) {
 
 
 
-    ajaxRemove.open("DELETE", "/LifeGoalsController/remove_goal/"+textToSend);
+    ajaxRemove.open("DELETE", "/LifeGoals/remove_goal/"+textToSend);
     ajaxRemove.send();
     
 }
