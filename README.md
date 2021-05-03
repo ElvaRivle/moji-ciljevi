@@ -5,7 +5,7 @@ My first project. Hopefully will improve it over time.
 
 More in README in future   
 
-# Izvrsena potpuna refraktorizacija aplikacije u smislu bolje organizacije koda i malo bolje sljedjenje MVC-a, kao i baze podataka    
+# Izvrsena potpuna refraktorizacija aplikacije u smislu bolje organizacije koda i malo bolje slijedjenje MVC-a, kao i baze podataka    
 # Na grani stari-kod se nalazi prvobitna verzija aplikacije, cisto radi buduce nostalgije  
 # Ima jos sitnica da se doradi, kod se negdje ponavlja, mozda malo JS... ali kad/ako se opet nakanim  
 # Glavnina posla je zavrsena  
