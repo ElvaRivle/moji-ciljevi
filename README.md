@@ -5,12 +5,6 @@ My first project. Hopefully will improve it over time.
 
 More in README in future   
 
-# Izvrsena potpuna refraktorizacija aplikacije u smislu bolje organizacije koda i malo bolje slijedjenje MVC-a, kao i baze podataka    
-# Na grani stari-kod se nalazi prvobitna verzija aplikacije, cisto radi buduce nostalgije  
-# Ima jos sitnica da se doradi, kod se negdje ponavlja, mozda malo JS... ali kad/ako se opet nakanim  
-# Glavnina posla je zavrsena  
-
-
 1st update [2.7.2019.]
 ----------------------------------------------------
 Learned a lot by messing around with git, regex and DB design.  
@@ -28,8 +22,8 @@ Happily finished first official phase of project.
   
   
 ## Treci update [22.7.2020.]  
-KAKO OVO CUDO POSTAVITI DA RADI?????  
-Potrebna MySQL baza moci, tu je dump baze  
+### Kako pokrenuti projekat?
+Potrebna MySQL baza moci, tu je dump baze (moci.sql)
 Uz bazu potrebno je napraviti korisnika u MySQL sa username *moci* i sifrom *moci123*    
 Cron fajl dodati negdje gdje se cron jobovi izvrsavaju  
 U /etc/apache2/apache2.conf namjesiti za /var/www direktorij AllowOverride All, da se dozvoli izvrsavanje .htaccess-a  
