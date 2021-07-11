@@ -25,7 +25,7 @@
         <!--<button id="addBtn" onclick="add_goal()">+</button>-->
         <i class="material-icons" id="addBtn" onclick="add_goal()">add_circle</i>
     </div>
-    <?
+    <?php
         foreach ($params['goals'] as $goal) {
             echo '<div class=\'dailyGoal ';
             if ($goal['completed'] == 1) {

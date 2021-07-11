@@ -13,7 +13,7 @@ define('DEFAULT_CONTROLLER', 'DailyGoalsController');
 define('DEFAULT_ACTION', 'index_action');
 #napraviti novog korisnika na bazi, vezat ga i za localhost i za % i to staviti u user i pass
 define('DB_HOST', 'localhost');
-define('DB_USER', 'moci');
-define('DB_PASS', 'moci123');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_NAME', 'moci');
 ?>
