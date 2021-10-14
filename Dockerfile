@@ -14,5 +14,7 @@ RUN chmod 0644 /etc/cron.d/mysql_cron
 RUN crontab /etc/cron.d/mysql_cron
 RUN touch /var/log/cron.log
 
+COPY run.sh /run.sh
+
 CMD ["/run.sh"]
 #CMD ["/tmp/initDB.sh"]
