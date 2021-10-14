@@ -19,6 +19,6 @@ Simple app for goals in life
 * mount ${PWD}/app <-> /app
 * mount ${PWD}/mysql <-> /var/lib/mysql
 * docker build -t moci:latest .
-* docker run -td -p 80:80 -v ${PWD}/app:/app -v #{PWD}/mysql:/var/lib/mysql moci:latest
+* docker run -td -p 80:80 -v ${PWD}/app:/app -v ${PWD}/mysql:/var/lib/mysql moci:latest
 * docker exec -it _ime kontejnera_ bash
 
