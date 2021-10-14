@@ -29,7 +29,7 @@
         foreach ($params['goals'] as $goal) {
             echo '<div class=\'dailyGoal ';
             if ($goal['completed'] == 1) {
-                echo 'dailyGoaldone\' data-click-cnt=\'1\'';
+                echo 'dailyGoalDone\' data-click-cnt=\'1\'';
             }
             echo '\' onclick=\'remove_goal(this)\'>';
             echo "{$goal['description']}</div>";
