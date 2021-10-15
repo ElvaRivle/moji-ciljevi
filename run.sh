@@ -117,5 +117,8 @@ echo "Initializing MySQL DB!"
 wait
 echo "DB initialized!"
 
+echo "Starting cron service"
+service cron start
+
 echo "Starting supervisord"
 exec supervisord -n
