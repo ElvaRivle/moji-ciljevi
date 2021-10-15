@@ -1,1 +1,1 @@
-* 00 * * * root mysql --user="root" --password="" --database="moci" --execute="UPDATE daily_goals SET completed=0 WHERE completed=1;"
+0 0 * * * root mysql --user="root" --password="" --database="moci" --execute="UPDATE daily_goals SET completed=0 WHERE completed=1;"
